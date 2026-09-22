@@ -1,18 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 export default function Home() {
   return (
-    <main className="relative flex min-h-dvh items-center justify-center bg-black px-6 text-white">
-      <header className="absolute inset-x-6 top-6 flex items-center justify-between sm:inset-x-8 sm:top-8">
+    <main className="relative flex min-h-svh items-center justify-center bg-black px-5 text-white">
+      <header className="absolute inset-x-5 top-5 flex items-center justify-between">
         <Link
           href="/"
           aria-label="qath"
-          className="flex items-center opacity-30 transition-opacity duration-300 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none"
+          className="flex items-center opacity-40 transition-opacity hover:opacity-100"
         >
           <Image
             src="/qath.svg"
-            alt="qath logo"
+            alt="qath"
             width={64}
             height={20}
             priority
@@ -20,43 +21,56 @@ export default function Home() {
           />
         </Link>
 
-        <nav aria-label="Social links" className="flex items-center gap-4">
-          <a
-            href="https://github.com/qath-eu"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="flex items-center opacity-30 transition-opacity duration-300 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none"
-          >
+        <nav aria-label="Social links" className="flex items-center">
+          <SocialLink href="https://github.com/qath-eu" label="GitHub">
             <GitHubIcon className="size-4.5" />
-          </a>
+          </SocialLink>
 
-          <a
+          <SocialLink
             href="https://linkedin.com/company/qath-eu"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            className="flex items-center opacity-30 transition-opacity duration-300 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none"
+            label="LinkedIn"
           >
             <LinkedInIcon className="size-4.5" />
-          </a>
+          </SocialLink>
         </nav>
       </header>
 
-      <section className="flex flex-col items-center text-center">
-        <h1 className="text-[clamp(2.5rem,5vw,4.75rem)] font-medium leading-[1.02] tracking-[-0.045em]">
+      <section className="text-center">
+        <h1 className="text-[clamp(2.55rem,12vw,4.75rem)] font-medium leading-none tracking-tighter">
           <span className="block text-white/90">European Transport</span>
 
-          <span className="intelligence mt-2 block pb-[0.14em]">
+          <span className="intelligence mt-2 block pb-[0.12em]">
             Intelligence
           </span>
         </h1>
 
-        <p className="mt-7 text-sm font-normal tracking-[-0.01em] text-white/30">
+        <p className="mx-auto mt-6 max-w-72 text-[13px] leading-5 text-white/35 sm:max-w-none sm:text-sm">
           A new perspective on European transport is on its way.
         </p>
       </section>
     </main>
+  );
+}
+
+function SocialLink({
+  href,
+  label,
+  children,
+}: {
+  href: string;
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="flex size-8 items-center justify-center text-white opacity-40 transition-opacity hover:opacity-100"
+    >
+      {children}
+    </a>
   );
 }
 

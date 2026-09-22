@@ -1,5 +1,55 @@
 @import "tailwindcss";
 
+html {
+  min-height: 100%;
+  background: #000;
+  color-scheme: dark;
+  overscroll-behavior: none;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #fff;
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a,
+button {
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  background: transparent;
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+a:focus,
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.no-tap-highlight {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+img,
+svg {
+  display: block;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
 .intelligence {
   position: relative;
   display: inline-block;
@@ -58,5 +108,12 @@
 
   to {
     background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intelligence {
+    animation: none;
+    background-position: 50% 50%;
   }
 }

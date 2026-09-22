@@ -1,78 +1,26 @@
 # qath
 
-**European Transport Intelligence**
+European Transport Intelligence — [qath.eu](https://qath.eu).
 
-qath is an independent project focused on creating a new perspective on European road transport through data, intelligence, and technology.
+Built with Next.js, React, TypeScript, and Tailwind CSS.
 
-The project is currently in development.
+## Development
 
-## Tech stack
-
-- [Next.js](https://nextjs.org)
-- React
-- TypeScript
-- Tailwind CSS
-
-## Getting started
-
-Install the dependencies:
+Use Node.js 24.
 
 ```bash
-npm install
-```
-
-Start the development server:
-
-```bash
+npm ci
 npm run dev
 ```
 
-Open http://localhost:3000 in your browser.
+Open [localhost:3000](http://localhost:3000).
 
-The main landing page can be found in:
+## Commands
 
-```text
-app/page.tsx
-```
+- `npm run check` — lint, typecheck, and production build.
+- `npm run build` — production build.
+- `npm start` — start the production server.
 
-## Scripts
+## License
 
-Run the development server:
-
-```bash
-npm run dev
-```
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-Start the production server:
-
-```bash
-npm run start
-```
-
-Run ESLint:
-
-```bash
-npm run lint
-```
-
-## Project status
-
-qath is currently under active development.
-
-More information will become available as the project evolves.
-
-## Links
-
-- Website: [qath.eu](https://qath.eu)
-- GitHub: [github.com/qath-eu](https://github.com/qath-eu)
-- LinkedIn: [linkedin.com/company/qath-eu](https://linkedin.com/company/qath-eu)
-
----
-
-© 2026 qath
+[MIT](LICENSE) · © 2026 qath

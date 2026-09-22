@@ -6,10 +6,12 @@ const googleSansFlex = Google_Sans_Flex({
   subsets: ["latin"],
   fallback: ["Arial", "Helvetica", "sans-serif"],
   adjustFontFallback: false,
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://qath.eu"),
+  alternates: { canonical: "/" },
   title: "European Transport Intelligence",
   description: "A new perspective on European transport is on its way.",
   applicationName: "qath",
@@ -32,9 +34,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${googleSansFlex.className} h-full bg-black antialiased`}
+      className={`${googleSansFlex.className} h-full`}
     >
-      <body className="flex min-h-full flex-col bg-black">{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

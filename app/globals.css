@@ -18,36 +18,79 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a,
-button {
-  border: 0;
-  outline: 0;
-  box-shadow: none;
-  background: transparent;
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  z-index: 0;
+  background-color: #000;
+}
 
+.ambient-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ambient-background::before,
+.ambient-background::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(
+    ellipse at 30% 45%,
+    rgba(100, 135, 180, 0.12) 0%,
+    rgba(100, 135, 180, 0) 50%
+  );
+}
+
+.ambient-background::after {
+  background: radial-gradient(
+    ellipse at 70% 65%,
+    rgba(130, 110, 170, 0.1) 0%,
+    rgba(130, 110, 170, 0) 45%
+  );
+}
+
+@keyframes ambient-drift {
+  from {
+    transform: translate(-5%, -3%) scale(1);
+  }
+
+  to {
+    transform: translate(5%, 3%) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ambient-background::before {
+    animation: ambient-drift 22s ease-in-out infinite alternate;
+  }
+
+  .ambient-background::after {
+    animation: ambient-drift 28s ease-in-out -14s infinite alternate-reverse;
+  }
+}
+
+a {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
 }
 
-a:focus,
-button:focus {
+a:focus {
+  outline: 2px solid #a5b4fc;
+  outline-offset: 5px;
+}
+
+a:focus:not(:focus-visible) {
   outline: none;
-  box-shadow: none;
-}
-
-.no-tap-highlight {
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-}
-
-img,
-svg {
-  display: block;
-  border: 0;
-  outline: 0;
-  box-shadow: none;
-
-  -webkit-tap-highlight-color: transparent;
 }
 
 .intelligence {
@@ -55,23 +98,29 @@ svg {
   display: inline-block;
   isolation: isolate;
 
-  color: transparent;
+  color: #b5a0ff;
+}
 
-  background: linear-gradient(
-    100deg,
-    #6fd3ff 0%,
-    #739cff 25%,
-    #8b73ff 45%,
-    #b86cf0 65%,
-    #e879c5 82%,
-    #f795b3 100%
-  );
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .intelligence {
+    color: transparent;
 
-  background-size: 180% 100%;
-  background-clip: text;
-  -webkit-background-clip: text;
+    background: linear-gradient(
+      100deg,
+      #6fd3ff 0%,
+      #739cff 25%,
+      #8b73ff 45%,
+      #b86cf0 65%,
+      #e879c5 82%,
+      #f795b3 100%
+    );
 
-  animation: intelligence-gradient 4.5s ease-in-out infinite alternate;
+    background-size: 180% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    animation: intelligence-gradient 4.5s ease-in-out infinite alternate;
+  }
 }
 
 .intelligence::before {

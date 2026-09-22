@@ -1,23 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import packageInfo from "../package.json";
 
 export default function Home() {
   const commitSha = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7);
 
   return (
-    <main className="relative flex min-h-svh items-center justify-center bg-black px-5 text-white">
+    <main className="hero relative flex items-center justify-center px-5 py-24">
+      <div className="ambient-background" aria-hidden="true" />
       <header className="absolute inset-x-5 top-5 flex items-center justify-between">
         <Link
           href="/"
           aria-label="qath"
-          className="flex items-center opacity-40 transition-opacity hover:opacity-100"
+          className="flex items-center opacity-60 transition-opacity hover:opacity-100 focus:opacity-100"
         >
           <Image
             src="/qath.svg"
             alt="qath"
             width={64}
-            height={20}
+            height={26}
             priority
             className="h-auto w-12 sm:w-14"
           />
@@ -46,7 +48,7 @@ export default function Home() {
           </span>
         </h1>
 
-        <p className="mx-auto mt-6 max-w-72 text-[13px] leading-5 text-white/35 sm:max-w-none sm:text-sm">
+        <p className="mx-auto mt-6 max-w-72 text-[13px] leading-5 text-white/60 sm:max-w-none sm:text-sm">
           A new perspective on European transport is on its way.
         </p>
       </section>
@@ -57,13 +59,13 @@ export default function Home() {
             href={`https://github.com/qath-eu/web/commit/${process.env.VERCEL_GIT_COMMIT_SHA}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-[10px] tracking-wide text-white/20 transition-colors hover:text-white/50"
+            className="font-mono text-[10px] tracking-wide text-white/60 transition-colors hover:text-white focus:text-white"
           >
             build {commitSha}
           </a>
         ) : (
-          <span className="font-mono text-[10px] tracking-wide text-white/20">
-            development
+          <span className="font-mono text-[10px] tracking-wide text-white/60">
+            {process.env.NODE_ENV === "production" ? `v${packageInfo.version}` : "development"}
           </span>
         )}
       </footer>
@@ -86,7 +88,7 @@ function SocialLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="flex size-8 items-center justify-center text-white opacity-40 transition-opacity hover:opacity-100"
+      className="flex size-8 items-center justify-center text-white opacity-60 transition-opacity hover:opacity-100 focus:opacity-100"
     >
       {children}
     </a>

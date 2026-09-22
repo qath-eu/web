@@ -9,11 +9,35 @@ const googleSansFlex = Google_Sans_Flex({
   weight: ["400", "500"],
 });
 
+const title = "qath — European Transport Intelligence";
+const description = "A new perspective on European transport is on its way.";
+const shareImage = {
+  url: "/preview.png",
+  width: 1200,
+  height: 630,
+  alt: "qath — European Transport Intelligence.",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://qath.eu"),
   alternates: { canonical: "/" },
-  title: "European Transport Intelligence",
-  description: "A new perspective on European transport is on its way.",
+  title,
+  description,
+  openGraph: {
+    type: "website",
+    url: "https://qath.eu",
+    siteName: "qath",
+    locale: "en_GB",
+    title,
+    description,
+    images: [{ ...shareImage, type: "image/jpeg" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [shareImage],
+  },
   applicationName: "qath",
   appleWebApp: {
     capable: true,
@@ -32,10 +56,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${googleSansFlex.className} h-full`}
-    >
+    <html lang="en" className={`${googleSansFlex.className} h-full`}>
       <body>{children}</body>
     </html>
   );

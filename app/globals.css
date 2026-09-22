@@ -1,1 +1,62 @@
 @import "tailwindcss";
+
+.intelligence {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+
+  color: transparent;
+
+  background: linear-gradient(
+    100deg,
+    #6fd3ff 0%,
+    #739cff 25%,
+    #8b73ff 45%,
+    #b86cf0 65%,
+    #e879c5 82%,
+    #f795b3 100%
+  );
+
+  background-size: 180% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  animation: intelligence-gradient 4.5s ease-in-out infinite alternate;
+}
+
+.intelligence::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  left: 50%;
+  top: 55%;
+
+  width: 100%;
+  height: 90%;
+
+  transform: translate(-50%, -50%);
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(126, 92, 255, 0.5) 0%,
+    rgba(177, 78, 255, 0.32) 35%,
+    rgba(240, 83, 190, 0.16) 60%,
+    transparent 80%
+  );
+
+  filter: blur(35px);
+  opacity: 0.9;
+
+  pointer-events: none;
+}
+
+@keyframes intelligence-gradient {
+  from {
+    background-position: 0% 50%;
+  }
+
+  to {
+    background-position: 100% 50%;
+  }
+}

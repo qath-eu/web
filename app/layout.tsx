@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Google_Sans_Flex } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 const googleSansFlex = Google_Sans_Flex({
   subsets: ["latin"],
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${googleSansFlex.className} h-full`}>
       <body>{children}</body>
+      <Analytics />
     </html>
   );
 }

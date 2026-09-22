@@ -3,6 +3,8 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 export default function Home() {
+  const commitSha = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7);
+
   return (
     <main className="relative flex min-h-svh items-center justify-center bg-black px-5 text-white">
       <header className="absolute inset-x-5 top-5 flex items-center justify-between">
@@ -48,6 +50,23 @@ export default function Home() {
           A new perspective on European transport is on its way.
         </p>
       </section>
+
+      <footer className="absolute bottom-4 right-5 text-right sm:bottom-5">
+        {commitSha ? (
+          <a
+            href={`https://github.com/qath-eu/qath/commit/${process.env.VERCEL_GIT_COMMIT_SHA}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-[10px] tracking-wide text-white/20 transition-colors hover:text-white/50"
+          >
+            build {commitSha}
+          </a>
+        ) : (
+          <span className="font-mono text-[10px] tracking-wide text-white/20">
+            development
+          </span>
+        )}
+      </footer>
     </main>
   );
 }

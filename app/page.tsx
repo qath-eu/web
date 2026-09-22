@@ -54,7 +54,7 @@ export default function Home() {
       <footer className="absolute bottom-4 right-5 text-right sm:bottom-5">
         {commitSha ? (
           <a
-            href={`https://github.com/qath-eu/qath/commit/${process.env.VERCEL_GIT_COMMIT_SHA}`}
+            href={`https://github.com/qath-eu/web/commit/${process.env.VERCEL_GIT_COMMIT_SHA}`}
             target="_blank"
             rel="noopener noreferrer"
             className="font-mono text-[10px] tracking-wide text-white/20 transition-colors hover:text-white/50"

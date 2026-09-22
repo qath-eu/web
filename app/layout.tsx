@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     locale: "en_GB",
     title,
     description,
-    images: [{ ...shareImage, type: "image/jpeg" }],
+    images: [{ ...shareImage, type: "image/png" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -58,8 +58,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${googleSansFlex.className} h-full`}>
-      <body>{children}</body>
-      <Analytics />
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
